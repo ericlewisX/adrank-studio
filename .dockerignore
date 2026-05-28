@@ -1,0 +1,35 @@
+# Git
+.git
+.gitignore
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+
+# Tests
+pytest_cache/
+.coverage
+
+# Logs
+*.log
+
+# Build artifacts
+dist/
+build/
+
+# Temporary files
+*.tmp

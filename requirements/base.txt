@@ -1,0 +1,35 @@
+# Core data stack
+numpy
+pandas
+scipy
+
+# ML / ranking
+scikit-learn
+lightgbm
+xgboost
+
+# Feature engineering / preprocessing
+category-encoders
+
+# Experiment tracking (lightweight first)
+mlflow
+
+# API serving
+fastapi
+uvicorn
+
+# Data validation (important for pipelines)
+pydantic
+pandera
+
+# Utilities
+pyyaml
+tqdm
+joblib
+
+# Testing
+pytest
+
+# Jupyter for experiments
+jupyter
+ipykernel
