@@ -1,7 +1,16 @@
 from lightgbm import LGBMClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import roc_auc_score
+
+from sklearn.model_selection import (
+    train_test_split
+)
+
 import joblib
+
+from src.arrs.evaluation import (
+    evaluate_model,
+    save_metrics,
+    save_calibration_plot
+)
 
 
 def train_ctr_model(X, y):
@@ -19,19 +28,41 @@ def train_ctr_model(X, y):
         max_depth=6
     )
 
-    model.fit(X_train, y_train)
+    model.fit(
+        X_train,
+        y_train
+    )
 
-    preds = model.predict_proba(X_test)[:, 1]
+    preds = model.predict_proba(
+        X_test
+    )[:, 1]
 
-    auc = roc_auc_score(y_test, preds)
+    metrics = evaluate_model(
+        y_test,
+        preds
+    )
 
-    print(f"\nROC-AUC: {auc:.4f}")
+    print("\nEvaluation Metrics")
+
+    for name, value in metrics.items():
+        print(
+            f"{name}: {value:.4f}"
+        )
+
+    save_metrics(metrics)
+
+    save_calibration_plot(
+        y_test,
+        preds
+    )
 
     joblib.dump(
         model,
         "models/lgbm_ctr_model.pkl"
     )
 
-    print("Model saved.")
+    print(
+        "\nModel saved."
+    )
 
     return model

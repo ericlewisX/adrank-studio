@@ -27,6 +27,9 @@ pyyaml
 tqdm
 joblib
 
+# Visualization
+matplotlib
+
 # Testing
 pytest
 
